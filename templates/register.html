@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        input{
+            height: 1.75rem;
+            padding: 5px;
+            border: 1px solid rgb(251 191 36);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-lg font-bold text-center">Register</h1>
+
+    <div class="flex justify-center items-center">
+        <form class="flex flex-col space-y-2" method="POST" action="">
+            {% csrf_token %}
+            {% for field in form %}
+                <br>
+                {{ field.label }}
+                {{ field }}
+            {% endfor %}
+
+            {{ form.errors }}
+
+            <button class="bg-amber-400 p-2 rounded-full font-bold" type="submit">Register</button>
+            <a class="hover:underline" href="/login">Already have an account? Login!</a>
+        </form>
+    </div>
+
+</body>
+</html>

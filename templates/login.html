@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        input{
+            height: 1.75rem;
+            padding: 5px;
+            border: 1px solid rgb(251 191 36);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-lg font-bold text-center">Login</h1>
+
+    <div class="flex justify-center items-center">
+        <form method="POST" class="flex flex-col space-y-2" action="">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username"/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password"/>
+
+            {% for message in messages %}
+                <p id="messages">{{ message }}</p>
+            {% endfor %}
+
+            <button class="bg-amber-400 p-2 rounded-full font-bold" type="submit">Login</button>
+            <a class="hover:underline" href="/register">Don't have an account? Register!</a>
+        </form>
+    </div>
+</body>
+</html>
